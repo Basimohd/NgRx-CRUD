@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Basim Mohamemed",
+      "age": 18,
+      "email": "basimohammedkt@gmail.com"
+    }
+  ]
+}
