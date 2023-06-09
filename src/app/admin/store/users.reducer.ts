@@ -1,15 +1,17 @@
-import { createReducer } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
 import { User } from "./user";
+import { UserAPISuccess, UserSaveAPISuccess } from "./users.action";
 
-export const intitialState: ReadonlyArray<User> = [
-    {
-        "id": 1,
-        "name": "Basim Mohamemed",
-        "age": 15,
-        "email": "basimohammedkt@gmail.com"
-    }
-];
+export const intitialState: ReadonlyArray<User> = [];
 
 export const userReducer = createReducer(
-    intitialState
+    intitialState,
+    on(UserAPISuccess,(_state,{allUsers})=>{
+        return allUsers;
+    }),
+    on(UserSaveAPISuccess,(state,{response})=>{
+        let newState = [...state]
+        newState.unshift(response)
+        return newState;
+    })
 )
