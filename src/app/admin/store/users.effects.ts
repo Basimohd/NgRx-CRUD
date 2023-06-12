@@ -1,6 +1,6 @@
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { UserService } from "../service/user.service";
-import { UserAPISuccess, UserSaveAPISuccess, invokeSaveUser, invokeUser } from "./users.action";
+import { UserAPISuccess, UserSaveAPISuccess, invokeSaveUser, invokeUpdateUser, invokeUser, updateUserSuccessAPI } from "./users.action";
 import { map, switchMap,tap,withLatestFrom,EMPTY } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Store, select } from "@ngrx/store";
@@ -42,6 +42,21 @@ saveUser$ = createEffect(()=>
                     map((data => {
                         this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponse:'',apiStatus:'success'}}))
                         return UserSaveAPISuccess({response:data})
+                    }))
+                )
+            })
+        )
+)
+updateUser$ = createEffect(()=>
+        this.action$.pipe(
+            ofType(invokeUpdateUser),
+            switchMap((action)=>{
+                this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponse:'',apiStatus:''}}))
+                return this.UserService
+                .update(action.payload).pipe(
+                    map((data => {
+                        this.appStore.dispatch(setAPIStatus({apiStatus:{apiResponse:'',apiStatus:'success'}}))
+                        return updateUserSuccessAPI({response:data})
                     }))
                 )
             })

@@ -17,3 +17,11 @@ export const UserSaveAPISuccess = createAction(
     "[User Save API] invoke user Added Success",
     props<{response:User}>()
 )
+export const invokeUpdateUser = createAction(
+    "[User Update API] invoke user Update API",
+    props<{payload:User}>()
+)
+export const updateUserSuccessAPI = createAction(
+    "[User Update API] user Update API Success ",
+    props<{response:User}>()
+)

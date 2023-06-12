@@ -15,4 +15,8 @@ export class UserService {
   saveUser(payLoad:User){
     return this.http.post<User>("http://localhost:3000/users",payLoad)
   }
+  update(payLoad:User){
+    console.log(payLoad)
+    return this.http.put<User>(`http://localhost:3000/users/${payLoad.id}`,payLoad);
+  }
 }

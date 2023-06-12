@@ -10,12 +10,14 @@ import { UsersEffects } from './store/users.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { AddUsersComponent } from './add-users/add-users.component';
 import { FormsModule } from '@angular/forms';
+import { EditUsersComponent } from './edit-users/edit-users.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
-    AddUsersComponent
+    AddUsersComponent,
+    EditUsersComponent
   ],
   imports: [
     CommonModule,
