@@ -19,4 +19,7 @@ export class UserService {
     console.log(payLoad)
     return this.http.put<User>(`http://localhost:3000/users/${payLoad.id}`,payLoad);
   }
+  delete(id:Number){
+    return this.http.delete<User>(`http://localhost:3000/users/${id}`)
+  }
 }

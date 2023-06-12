@@ -25,3 +25,11 @@ export const updateUserSuccessAPI = createAction(
     "[User Update API] user Update API Success ",
     props<{response:User}>()
 )
+export const invokeDeleteUser = createAction(
+    "[User Delete API] invoke user Delete API",
+    props<{id:Number}>()
+)
+export const deleteUserSucces = createAction(
+    "[User Delete API] user Delete API Success ",
+    props<{id:Number}>()
+)

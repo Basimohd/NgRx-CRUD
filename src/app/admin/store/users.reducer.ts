@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { User } from "./user";
-import { UserAPISuccess, UserSaveAPISuccess, updateUserSuccessAPI } from "./users.action";
+import { UserAPISuccess, UserSaveAPISuccess, deleteUserSucces, updateUserSuccessAPI } from "./users.action";
 
 export const intitialState: ReadonlyArray<User> = [];
 
@@ -17,6 +17,10 @@ export const userReducer = createReducer(
     on(updateUserSuccessAPI,(state,{response})=>{
         let newState = state.filter(user=>user.id !== response.id)
         newState.unshift(response)
+        return newState;
+    }),
+    on(deleteUserSucces,(state,{id})=>{
+        let newState = state.filter(user=>user.id !== id) 
         return newState;
     })
 )
